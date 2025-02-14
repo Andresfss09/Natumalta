@@ -1,0 +1,219 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>San Valentín</title>  
+    <style>  
+        body {  
+            margin: 0;  
+            padding: 0;  
+            height: 100vh;  
+            font-family: Arial, sans-serif;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            background: linear-gradient(135deg, #ff6b81, #ff94b8);  
+            overflow: hidden;  
+            animation: backgroundAnimation 10s ease infinite;  
+            position: relative; /* Para posicionar las nubes */  
+        }  
+
+        @keyframes backgroundAnimation {  
+            0% { background-position: 0% 100%; }  
+            50% { background-position: 100% 0%; }  
+            100% { background-position: 0% 100%; }  
+        }  
+
+        .cloud {  
+            position: absolute;  
+            background: #ff6b81;  
+            border-radius: 50%;  
+            opacity: 0.6;  
+            z-index: 1;  
+            animation: float 6s ease-in-out infinite;  
+        }  
+
+        /* Estilos para las formas de nubes */  
+        .cloud::before, .cloud::after {  
+            content: '';  
+            position: absolute;  
+            background: #ff6b81;  
+            border-radius: 50%;  
+        }  
+
+        .cloud::before {  
+            width: 100px;  
+            height: 100px;  
+            top: -50px;  
+            left: 0;  
+        }  
+
+        .cloud::after {  
+            width: 120px;  
+            height: 120px;  
+            top: -60px;  
+            right: 0;  
+        }  
+
+        /* Efecto de flotación de nubes */  
+        @keyframes float {  
+            0%, 100% {  
+                transform: translateY(0);  
+            }  
+            50% {  
+                transform: translateY(-15px);  
+            }  
+        }  
+
+        .container {  
+            background: rgba(255, 255, 255, 0.9);  
+            padding: 30px;  
+            border-radius: 20px;  
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);  
+            text-align: center;  
+            animation: fadeIn 2s ease;  
+            position: relative;  
+            z-index: 2; /* Asegura que el contenedor esté por encima de las nubes */  
+        }  
+
+        h1 {  
+            color: #e60073;  
+            font-size: 36px;  
+            margin: 0;  
+            animation: bounceIn 1s;  
+        }  
+
+        p {  
+            font-size: 24px;  
+            color: #333;  
+            margin: 10px 0;  
+            line-height: 1.5;  
+        }  
+
+        @keyframes fadeIn {  
+            from { opacity: 0; transform: scale(0.8); }  
+            to { opacity: 1; transform: scale(1); }  
+        }  
+
+        @keyframes bounceIn {  
+            from { transform: scale(0); }  
+            60% { transform: scale(1.1); }  
+            100% { transform: scale(1); }  
+        }  
+
+        .buttons {  
+            margin-top: 20px;  
+        }  
+
+        button {  
+            background-color: #ff6b81;  
+            border: none;  
+            color: white;  
+            padding: 15px 30px;  
+            text-align: center;  
+            text-decoration: none;  
+            display: inline-block;  
+            font-size: 18px;  
+            margin: 10px;  
+            border-radius: 5px;  
+            cursor: pointer;  
+            transition: background 0.3s;  
+        }  
+
+        button:hover {  
+            background-color: #ff4c69;  
+        }  
+
+        #response {  
+            margin-top: 20px;  
+            font-size: 20px;  
+        }  
+
+        .animated-response {  
+            display: none;  
+            animation: fadeIn 1s ease;  
+            margin-top: 20px;  
+            font-size: 20px;  
+            color: #e60073;  
+        }  
+
+        .emoji-sad {  
+            font-size: 30px;  
+            color: #e74c3c;  
+        }  
+
+        .emoji-love {  
+            font-size: 30px;  
+            animation: bounce 1s infinite;  
+        }  
+
+        @keyframes bounce {  
+            0%, 100% { transform: translateY(0); }  
+            50% { transform: translateY(-10px); }  
+        }  
+
+        .emoji-angry {  
+            font-size: 30px;  
+            animation: shake 0.5s;  
+        }  
+
+        @keyframes shake {  
+            0%, 100% { transform: translateX(0); }  
+            25% { transform: translateX(-5px); }  
+            50% { transform: translateX(5px); }  
+            75% { transform: translateX(-5px); }  
+        }  
+
+        @media (max-width: 600px) {  
+            h1 { font-size: 28px; }  
+            p { font-size: 18px; }  
+            button { font-size: 16px; padding: 10px 20px; }  
+        }  
+    </style>  
+</head>  
+<body>  
+    <!-- Añadimos diferentes nubes animadas en el fondo -->  
+    <div class="cloud" style="top: 10%; left: 5%; width: 150px; height: 80px;"></div>  
+    <div class="cloud" style="top: 20%; right: 10%; width: 200px; height: 100px; animation-duration: 8s;"></div>  
+    <div class="cloud" style="top: 50%; left: 20%; width: 180px; height: 90px; animation-duration: 7s;"></div>  
+    <div class="cloud" style="top: 70%; right: 15%; width: 160px; height: 80px; animation-duration: 9s;"></div>  
+
+    <div class="container">  
+        <h1>💖 ¡Feliz Día de San Valentín! 💖</h1>  
+        <p>Te amo, Natumalta ❤️</p>  
+        <p>¿Te gustaría pasar conmigo toda nuestras vidas?</p>  
+
+        <div class="buttons">  
+            <button onclick="handleResponse('yes')">Sí</button>  
+            <button onclick="handleResponse('no')">No</button>  
+        </div>  
+
+        <p id="response" style="margin-top: 20px; font-size: 20px;"></p>  
+        <p id="animatedResponse" class="animated-response"></p>  
+    </div>  
+
+    <script>  
+        function handleResponse(answer) {  
+            const responseText = document.getElementById('response');  
+            const animatedResponseText = document.getElementById('animatedResponse');  
+
+            if (answer === 'yes') {  
+                responseText.innerText = '¡Genial! 😉';  
+                animatedResponseText.innerHTML = `  
+                    <span class="emoji-love">❤️😍🥰</span>  
+                    <br>  
+                    Espera un "sí", no te arrepentirás de tener a este cansón toda tu vida.`;  
+                animatedResponseText.style.display = 'block';  
+            } else {  
+                responseText.innerText = 'Te has equivocado!';  
+                animatedResponseText.innerHTML = `  
+                    <span class="emoji-angry">😠👿😡</span>  
+                    <br>  
+                    La opción correcta está al otro lado.`;  
+                animatedResponseText.style.display = 'block';  
+            }  
+        }  
+    </script>  
+</body>  
+</html>
